@@ -43,27 +43,10 @@ async def handle_new_message(event):
             time.sleep(1)  # pause for 1 second to rate-limit automatic replies   
             message = ""
             senderList.append(to_.id)
-            if senderList.count(to_.id) < 2:
+            if senderList.count(to_.id) < 1:
                 message =   f"""**AUTO REPLY**
                 \nHi @{from_.username},
-                \n\nMohon maaf boss saya sedang offline, mohon tunggu sebentar.
-                \nSilahkan lihat-lihat [imacakes](https://www.instagram.com/ima_cake_cirebon) dulu untuk cuci mata.
                 \n\n**AUTO REPLY**"""
-            elif senderList.count(to_.id) < 3:
-                message =   f"""**AUTO REPLY**
-                \nMohon bersabar @{from_.username}, boss saya masih offline 😒"""
-            elif senderList.count(to_.id) < 4:
-                message = f"""**AUTO REPLY** 
-                \n@{from_.username} Tolong bersabar yaa 😅"""
-            else:
-                random_number = random.randint(0,len(quizzes) - 1)
-                question = quizzes[random_number]['question']
-                answer = quizzes[random_number]['answer']
-                message = f"""**AUTO REPLY**
-                \n @{from_.username}, Main tebak-tebakan aja yuk 😁
-                \n {question}
-                \n {answer}
-                \n """
             
             if message != "":
                 await event.reply(message)
